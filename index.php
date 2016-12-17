@@ -47,9 +47,9 @@ body {
         echo '<p>';
         foreach ($property as $row) {
           foreach (get_object_vars($row) as $key => $value) {
-            echo '<p>';
-            echo $key . ': ' . $value;
-            echo '<p>';
+            echo '<b>';
+            echo $key . '</b> ' . $value;
+            echo '<br>';
           }
         }
         echo '</p>';
@@ -61,15 +61,14 @@ body {
     $json_str = $outputObject->retrieve();
     $json_obj = json_decode($json_str);
     $json_value_array = $json_obj->value;
+    echo '<p>';
     foreach ($json_value_array as $value_obj) {
-      echo '<p>';
       foreach ($value_obj as $key => $value) {
-        echo '<p>';
-        echo $key . ': ' . $value;
-        echo '</p>';
+        echo '<b>';
+        echo $key . '</b> ' . $value . '<br>';
       }
-      echo '</p>';
     }
+    echo '</p>';
   }
 ?>
 

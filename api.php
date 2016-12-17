@@ -46,13 +46,8 @@
                           " (id INTEGER PRIMARY KEY ASC, ip TEXT," .
                           "value TEXT, timestamp INTEGER)";
     $db->exec($table_create_query);
-    $table_create_index = "CREATE INDEX " . $table_name . "_timestamp_idx " .
-                          "ON " . $table_name .
-                          " (timestamp DESC)";
-    $db->exec($table_create_index);
     $query_string = "SELECT id, ip, value, timestamp from " . $table_name .
-                    " WHERE ip = '" . $ip .
-                    "' ORDER BY timestamp DESC LIMIT 10";
+                    " ORDER BY timestamp DESC LIMIT 10";
     $results = $db->query($query_string);
     if (!empty($results)) {
       $outputObject->append('"value":[{');
