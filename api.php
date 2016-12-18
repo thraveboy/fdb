@@ -42,10 +42,6 @@
   $arg_count = count($exploded_previous_command);
   if ($arg_count == 1) {
     $table_name = $db->escapeString($exploded_previous_command[0]);
-    $table_create_query = "CREATE TABLE " . $table_name .
-                          " (id INTEGER PRIMARY KEY ASC, ip TEXT," .
-                          "value TEXT, timestamp INTEGER)";
-    $db->exec($table_create_query);
     $query_string = "SELECT id, ip, value, timestamp from " . $table_name .
                     " ORDER BY timestamp DESC LIMIT 10";
     $results = $db->query($query_string);
@@ -69,6 +65,12 @@
         $row_num++;
       }
       $outputObject->append('}]');
+    }
+    else {
+      $table_create_query = "CREATE TABLE " . $table_name .
+                            " (id INTEGER PRIMARY KEY ASC, ip TEXT," .
+                            "value TEXT, timestamp INTEGER)";
+      $db->exec($table_create_query);
     }
   }
   if ($arg_count == 2) {
