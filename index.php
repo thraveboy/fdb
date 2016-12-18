@@ -14,7 +14,7 @@ body {
   $_LOCAL_API_CALLS = 1;
   require 'api.php';
 
-  $previous_command = $_POST['command'];
+  $previous_command = $_GET['command'];
   echo '<p>';
   print($previous_command);
   echo '</p>';
@@ -30,7 +30,7 @@ body {
    echo '</p>';
 ?>
 
-<FORM NAME="form1" METHOD="post" ACTION="">
+<FORM NAME="form1" METHOD="get" ACTION="">
     <INPUT TYPE="Text" VALUE="" NAME="command" SIZE="80" autofocus>
 </FORM>
 

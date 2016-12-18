@@ -32,8 +32,8 @@ body {
    echo '</p>';
 ?>
 
-<FORM NAME="form1" ACTION="">
-    <INPUT TYPE="Text" VALUE="" NAME="command" SIZE="80" autofocus
+<FORM NAME="form1" METHOD="GET" ACTION="dash.php">
+    <INPUT TYPE="Text" VALUE="" id="command" NAME="command" SIZE="80" autofocus
            onkeyup="showDash(this.value)">
 </FORM>
 
@@ -60,7 +60,21 @@ function showDash(str) {
 }
 
 var prev_cmd_val = document.getElementById("previous_command").innerText;
-showDash(prev_cmd_val);
+
+if (prev_cmd_val) {
+ showDash(prev_cmd_val);
+ document.getElementById("command").value = prev_cmd_val;
+}
+
+function updateDash() {
+  var dashName = document.getElementById("command").value;
+  if (dashName) {
+    showDash(dashName);
+  }
+}
+
+var dashUpdater = setInterval(updateDash, 5000);
+
 </script>
 
 </body>
